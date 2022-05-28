@@ -7,10 +7,12 @@ import androidx.lifecycle.lifecycleScope
 import com.mokita.recipesappa.viewmodel.MainViewModel
 import com.mokita.recipesappa.R
 import com.mokita.recipesappa.data.model.ResponseWrapper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()

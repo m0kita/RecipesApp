@@ -2,15 +2,19 @@ package com.mokita.recipesappa.data.network.clients
 
 import com.mokita.recipesappa.data.model.RandomRecipe
 import com.mokita.recipesappa.data.model.ResponseWrapper
-import com.mokita.recipesappa.data.network.NetworkObject
-import kotlinx.coroutines.Dispatchers
+import com.mokita.recipesappa.data.network.api.RecipeApi
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
-class RecipeApiClient {
+class RecipeApiClient @Inject constructor(
+    private val recipesApi: RecipeApi,
+    private val coroutineContext: CoroutineContext
+) {
 
     suspend fun getRandomRecipe(): ResponseWrapper<RandomRecipe?> {
-        return withContext(Dispatchers.IO) {
-            val response = NetworkObject.provideRecipesApi().getRandomRecipes()
+        return withContext(coroutineContext) {
+            val response = recipesApi.getRandomRecipes()
 
             when {
                 response.isSuccessful -> {

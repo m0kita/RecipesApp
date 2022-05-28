@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface RecipesApi {
+interface RecipeApi {
 
     @GET("recipes/random")
     suspend fun getRandomRecipes(
